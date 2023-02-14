@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.appcompat.app.ActionBar
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.loljokes.R
 import com.example.loljokes.databinding.ActivityMainBinding
 import com.example.loljokes.viewmodel.JokesViewModel
 
@@ -30,6 +32,11 @@ class MainActivity : AppCompatActivity() {
         setupRecyclerView()
         observeViewModel()
 
+        this.supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+        supportActionBar!!.setDisplayShowCustomEnabled(true)
+        supportActionBar!!.setCustomView(R.layout.action_bar)
+
+
 
         binding.swipeRefresh.setOnRefreshListener {
             Log.e(TAG, "Swipe Refresh")
@@ -37,7 +44,6 @@ class MainActivity : AppCompatActivity() {
             viewModel.refreshContent()
             binding.progressBar.isVisible = false
         }
-
     }
 
     private fun setupRecyclerView() = binding.rvJokes.apply {

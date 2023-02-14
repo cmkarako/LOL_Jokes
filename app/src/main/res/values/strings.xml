@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">LOL Jokes</string>
+    <string name="app_icon">app Icon</string>
+    <string name="lol_jokes">LOL Jokes</string>
 </resources>
